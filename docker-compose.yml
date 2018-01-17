@@ -1,28 +1,3 @@
-consul_config:
-  image: busybox
-  volumes:
-    - ./etc/consul/config:/consul/config
-
-consul_data:
-  image: busybox
-  volumes:
-    - ./etc/consul/data:/consul/data
-
-vault_config:
-  image: busybox
-  volumes:
-    - ./etc/vault/config:/vault/config
-
-vault_data:
-  image: busybox
-  volumes:
-    - ./etc/vault/data:/vault/data
-
-vault_logs:
-  image: busybox
-  volumes:
-    - ./etc/vault/logs:/vault/logs
-
 consul:
   container_name: consul.server
   command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect=1
@@ -47,3 +22,28 @@ vault:
   cap_add:
     - IPC_LOCK
   command: server
+
+consul_config:
+  image: busybox
+  volumes:
+    - ./etc/consul/config:/consul/config
+
+consul_data:
+  image: busybox
+  volumes:
+    - ./etc/consul/data:/consul/data
+
+vault_config:
+  image: busybox
+  volumes:
+    - ./etc/vault/config:/vault/config
+
+vault_data:
+  image: busybox
+  volumes:
+    - ./etc/vault/data:/vault/data
+
+vault_logs:
+  image: busybox
+  volumes:
+    - ./etc/vault/logs:/vault/logs
